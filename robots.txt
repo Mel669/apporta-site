@@ -1,0 +1,8 @@
+# apporta.fr
+User-agent: *
+Allow: /
+
+# La page d'information sur la prospection (art. 14 RGPD) doit rester
+# indexable : elle est référencée dans chaque message de prospection.
+
+Sitemap: https://apporta.fr/sitemap.xml

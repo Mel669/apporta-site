@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  APPORTA — page d'accueil (apporta.fr)
+  FAIL-CLOSED : jetons à remplir AVANT toute mise en ligne.
+  Un jeton non rempli restant = la page NE PART PAS.
+
+    contact@apporta.fr           — adresse email de contact (2 liens mailto : bouton du héros
+                          + bouton du bloc contact, dont l'adresse est aussi le libellé)
+    290 à 490 €       — prix du pilote 14 jours (ex. « 390 € »)
+    à partir de 500 €        — prix de la mise en route (ex. « 600 € »)
+    à partir de 590 €   — prix mensuel de l'abonnement (ex. « 690 € »)
+
+  Vérification rapide : lancer le contrôle du README §1 → 0 résultat attendu.
+  ═══════════════════════════════════════════════════════════════════
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apporta — Des prospects qualifiés, pas des listes</title>
+<meta name="description" content="Apporta : jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, en abonnement, pas de commission. Fiches prêtes à contacter : entreprise qualifiée sur un fait daté, interlocuteur et coordonnées vérifiées à la source, premier message rédigé.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314524a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23ffffff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+/* ==================================================================
+   TEINTE DE MARQUE — justification du choix
+   Une seule teinte : le vert sapin profond #14524a (déclinaisons
+   #0d3b35 foncé · #eef4f2 très clair). Pourquoi celle-là :
+   1. CONFIANCE SOBRE — les verts profonds désaturés portent les codes
+      des maisons établies (banque privée, édition juridique) : sérieux
+      sans froideur, là où un bleu corporate serait interchangeable.
+   2. DISTINCTE des marques voisines de l'écosystème : ni orange, ni
+      bleu — aucune confusion possible avec les univers existants.
+   3. ACCESSIBLE — #14524a sur blanc ≈ 9:1, le texte courant #1e2a26
+      ≈ 15:1, le texte secondaire #4a5a55 ≈ 7:1 : AA (et AAA) partout,
+      y compris en petits corps.
+   Typographie : titres en serif (Georgia) = registre éditorial haut
+   de gamme ; texte courant en sans système = lisibilité, 0 dépendance.
+   ================================================================== */
+:root{
+  --marque:#14524a;
+  --marque-fonce:#0d3b35;
+  --marque-clair:#eef4f2;
+  --encre:#1e2a26;
+  --encre-douce:#4a5a55;
+  --filet:#dde5e2;
+  --fond:#ffffff;
+  --fond-doux:#f6f8f7;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--encre);background:var(--fond);line-height:1.65;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+.conteneur{max-width:66rem;margin:0 auto;padding:0 1.5rem}
+a{color:var(--marque)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--marque);outline-offset:3px;border-radius:2px}
+
+/* Accès rapide clavier */
+.saut{position:absolute;left:-999px;top:0;background:var(--marque);color:#fff;padding:.6rem 1rem;z-index:10}
+.saut:focus{left:1rem;top:1rem}
+
+/* En-tête */
+header.site{border-bottom:1px solid var(--filet);background:var(--fond)}
+.barre{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-top:1.4rem;padding-bottom:1.4rem;flex-wrap:wrap}
+.marque-nom{font-family:var(--serif);font-size:1.55rem;letter-spacing:.02em;color:var(--encre);text-decoration:none}
+.marque-nom .point{color:var(--marque)}
+nav.principale a{color:var(--encre-douce);text-decoration:none;font-size:.95rem;margin-left:1.4rem}
+nav.principale a:hover{color:var(--marque);text-decoration:underline;text-underline-offset:4px}
+
+/* Héros */
+.heros{padding:5.5rem 0 5rem;background:linear-gradient(180deg,var(--fond) 0%,var(--fond-doux) 100%)}
+.heros h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.15;max-width:22ch}
+.formule{margin-top:1.6rem;font-size:clamp(1.1rem,2.2vw,1.3rem);color:var(--marque-fonce);max-width:56ch;border-left:3px solid var(--marque);padding-left:1.1rem}
+.heros .detail{margin-top:1.4rem;color:var(--encre-douce);max-width:60ch}
+.actions{margin-top:2.4rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.bouton{display:inline-block;background:var(--marque);color:#fff;text-decoration:none;padding:.85rem 1.9rem;border-radius:4px;font-size:1rem;letter-spacing:.01em}
+.bouton:hover{background:var(--marque-fonce)}
+.lien-doux{color:var(--marque);text-decoration:none;font-size:.98rem}
+.lien-doux:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Sections */
+section.bloc{padding:4.5rem 0;border-top:1px solid var(--filet)}
+.etiquette{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--marque);margin-bottom:.9rem}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3.5vw,2.2rem);line-height:1.2;max-width:28ch}
+.intro-bloc{margin-top:1rem;color:var(--encre-douce);max-width:62ch}
+
+/* Cartes (3 temps · segments · offre) */
+.grille{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.6rem}
+.carte{background:var(--fond);border:1px solid var(--filet);border-radius:6px;padding:1.8rem 1.6rem}
+.carte h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin-bottom:.7rem}
+.carte p{color:var(--encre-douce);font-size:.98rem}
+.numero{display:inline-block;font-family:var(--serif);font-size:1rem;color:var(--marque);border:1px solid var(--marque);border-radius:50%;width:2rem;height:2rem;line-height:2rem;text-align:center;margin-bottom:1rem}
+.fond-doux{background:var(--fond-doux)}
+.note-honnete{margin-top:2.2rem;color:var(--encre-douce);font-size:.98rem;max-width:62ch}
+
+/* Offre */
+.grille-offre{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.6rem}
+.offre{border:1px solid var(--filet);border-radius:6px;padding:2rem 1.8rem;background:var(--fond)}
+.offre.principale{border-color:var(--marque);border-width:2px}
+.offre .cadre{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--marque);margin-bottom:.6rem}
+.offre h3{font-family:var(--serif);font-weight:400;font-size:1.45rem;margin-bottom:.4rem}
+.offre .prix{font-size:1.15rem;color:var(--marque-fonce);margin-bottom:1rem}
+.offre ul{list-style:none;margin-top:.4rem}
+.offre li{padding-left:1.4rem;position:relative;margin-bottom:.55rem;color:var(--encre-douce);font-size:.98rem}
+.offre li::before{content:"—";position:absolute;left:0;color:var(--marque)}
+.engagement{margin-top:2.4rem;background:var(--marque-clair);border-radius:6px;padding:1.5rem 1.8rem;max-width:100%}
+.engagement p{color:var(--marque-fonce);font-size:1.02rem}
+
+/* Contact */
+.contact{padding:5rem 0;background:var(--marque);color:#fff}
+.contact h2{color:#fff}
+.contact p{margin-top:1rem;max-width:58ch;color:#dceae6}
+.contact .bouton{background:#fff;color:var(--marque-fonce);margin-top:2rem}
+.contact .bouton:hover{background:var(--marque-clair)}
+
+/* Pied de page */
+footer.site{background:var(--fond-doux);border-top:1px solid var(--filet);padding:2.6rem 0;font-size:.92rem;color:var(--encre-douce)}
+footer.site nav{margin-bottom:1rem}
+footer.site a{color:var(--encre-douce)}
+footer.site a:hover{color:var(--marque)}
+footer.site nav a{margin-right:1.6rem}
+.mention-tracage{margin-top:.8rem;font-size:.85rem}
+
+/* Réactif */
+@media (max-width:840px){
+  .grille,.grille-offre{grid-template-columns:1fr}
+  .heros{padding:3.5rem 0 3rem}
+  section.bloc{padding:3.2rem 0}
+  nav.principale{display:flex;flex-wrap:wrap;gap:.2rem .4rem}
+  nav.principale a{margin-left:0;margin-right:1rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Note sous la grille tarifaire */
+.note-prix{max-width:60ch;margin:1.6rem auto 0;text-align:center;font-size:.94rem;color:var(--encre-douce)}
+
+/* ═══ LA PREUVE — fiche spécimen ═══ */
+.preuve{padding:5rem 0;background:var(--marque-fonce);color:#eef4f2}
+.preuve .cadre{color:#8fc4b9}
+.preuve h2{color:#fff}
+.preuve .amorce{color:#b9d4ce;max-width:58ch;margin-top:.9rem}
+.fiche{background:var(--fond);color:var(--encre);border-radius:6px;margin-top:2.6rem;
+       box-shadow:0 24px 60px -28px rgba(0,0,0,.55);overflow:hidden;max-width:52rem}
+.fiche-tete{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+            flex-wrap:wrap;padding:1.15rem 1.6rem;background:var(--marque-clair);
+            border-bottom:1px solid var(--filet)}
+.fiche-tete .quoi{font-family:var(--serif);font-size:1.15rem}
+.fiche-tete .quand{font-size:.82rem;color:var(--encre-douce);letter-spacing:.04em}
+.fiche-corps{padding:1.6rem}
+.ligne{display:grid;grid-template-columns:9.5rem 1fr;gap:1rem;padding:.85rem 0;
+       border-bottom:1px solid var(--filet)}
+.ligne:last-of-type{border-bottom:0}
+.ligne dt{font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--encre-douce);padding-top:.15rem}
+.ligne dd{margin:0}
+.ligne .src{display:inline-block;font-size:.75rem;color:var(--marque);background:var(--marque-clair);
+            padding:.12rem .5rem;border-radius:3px;margin-left:.4rem;white-space:nowrap}
+.msg{background:var(--fond-doux);border-left:3px solid var(--marque);padding:1rem 1.2rem;
+     margin-top:1.2rem;font-size:.97rem;line-height:1.62}
+.msg p{margin:0 0 .6rem}.msg p:last-child{margin-bottom:0}
+.fiche-pied{padding:.85rem 1.6rem;background:var(--fond-doux);border-top:1px solid var(--filet);
+            font-size:.8rem;color:var(--encre-douce)}
+.preuve .apres{margin-top:2.2rem;color:#d6e7e3;max-width:56ch}
+.preuve .apres a{color:#fff;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:640px){.ligne{grid-template-columns:1fr;gap:.2rem}}
+
+/* ═══ QUI EST DERRIÈRE ═══ */
+.qui{padding:5rem 0}
+.qui-bloc{display:grid;grid-template-columns:8.5rem 1fr;gap:2.2rem;align-items:start;max-width:52rem}
+.qui-initiale{width:8.5rem;height:8.5rem;border-radius:50%;background:var(--marque-clair);
+              color:var(--marque);font-family:var(--serif);font-size:3.6rem;
+              display:flex;align-items:center;justify-content:center;line-height:1}
+.qui p{max-width:56ch;margin-bottom:1.05rem}
+.qui p:last-child{margin-bottom:0}
+.qui .franchise{margin-top:1.4rem;padding-left:1.1rem;border-left:3px solid var(--filet);
+                color:var(--encre-douce)}
+@media(max-width:640px){.qui-bloc{grid-template-columns:1fr;gap:1.4rem}
+  .qui-initiale{width:5.5rem;height:5.5rem;font-size:2.4rem}}
+</style>
+<link rel="canonical" href="https://apporta.fr/">
+<meta name="robots" content="index,follow">
+<meta name="author" content="Melvil Burri-Brand">
+<meta name="theme-color" content="#14524a">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Apporta">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://apporta.fr/">
+<meta property="og:title" content="Apporta — Des prospects qualifiés, pas des listes">
+<meta property="og:description" content="Jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, en abonnement, sans commission. Fiches prêtes à contacter : entreprise qualifiée sur un fait daté, interlocuteur et coordonnées vérifiées à la source, premier message rédigé.">
+<meta property="og:image" content="https://apporta.fr/og-apporta.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Apporta — des prospects qualifiés, pas des listes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apporta — Des prospects qualifiés, pas des listes">
+<meta name="twitter:description" content="Jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, en abonnement, sans commission. Fiches prêtes à contacter : entreprise qualifiée sur un fait daté, interlocuteur et coordonnées vérifiées à la source, premier message rédigé.">
+<meta name="twitter:image" content="https://apporta.fr/og-apporta.png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "@id":"https://apporta.fr/#apporta",
+  "name":"Apporta",
+  "description":"Service managé de prospection B2B : prospects qualifiés livrés chaque semaine, prêts à contacter. L'envoi et la relation restent chez le client.",
+  "url":"https://apporta.fr/",
+  "email":"contact@apporta.fr",
+  "areaServed":{"@type":"Country","name":"France"},
+  "serviceType":"Prospection commerciale B2B",
+  "brand":{"@type":"Brand","name":"Apporta"},
+  "parentOrganization":{"@type":"Organization","name":"Permea"},
+  "provider":{
+    "@type":"Person",
+    "name":"Melvil Burri-Brand",
+    "jobTitle":"Fondateur"
+  },
+  "address":{"@type":"PostalAddress","addressLocality":"Tassin-la-Demi-Lune","postalCode":"69160","addressCountry":"FR"},
+  "knowsLanguage":"fr",
+  "offers":{
+    "@type":"Offer",
+    "name":"Abonnement Apporta",
+    "priceCurrency":"EUR",
+    "price":"590",
+    "priceSpecification":{"@type":"UnitPriceSpecification","price":"590","priceCurrency":"EUR","unitCode":"MON","valueAddedTaxIncluded":false},
+    "availability":"https://schema.org/InStock"
+  }
+}
+</script>
+</head>
+<body>
+<a class="saut" href="#principal">Aller au contenu</a>
+
+<header class="site">
+  <div class="conteneur barre">
+    <a class="marque-nom" href="/">Apporta<span class="point">.</span></a>
+    <nav class="principale" aria-label="Navigation principale"><a href="#preuve">La preuve</a><a href="#methode">La méthode</a><a href="#offre">L'offre</a><a href="#qui">Qui je suis</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="principal">
+
+  <!-- ─────────────── HÉROS ─────────────── -->
+  <section class="heros">
+    <div class="conteneur">
+      <h1>Des prospects qualifiés, pas&nbsp;des&nbsp;listes.</h1>
+      <p class="formule">Apporta&nbsp;: jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, en&nbsp;abonnement, pas&nbsp;de&nbsp;commission.</p>
+      <p class="detail">Chaque semaine, des fiches prêtes à contacter&nbsp;: l'entreprise et le fait daté qui la qualifie, le décideur lorsqu'il est publiquement identifiable, ses coordonnées vérifiées à la source, et le premier message déjà rédigé. L'envoi, lui, reste entre vos mains.</p>
+      <div class="actions">
+        <a class="bouton" href="mailto:contact@apporta.fr">Écrivez-nous</a>
+        <a class="lien-doux" href="#methode">Comment ça marche&nbsp;↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── LA PREUVE ─────────────── -->
+  <section class="preuve" id="preuve">
+    <div class="conteneur">
+      <p class="cadre">La preuve</p>
+      <h2>Voici une fiche.</h2>
+      <p class="amorce">Tout le monde promet des «&nbsp;prospects qualifiés&nbsp;». Le plus simple est de vous montrer ce que vous recevrez, avant que vous n'ayez à nous croire.</p>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="quoi">Fiche prospect — exemple</span>
+          <span class="quand">Segment&nbsp;: emballage e-commerce</span>
+        </div>
+        <div class="fiche-corps">
+          <dl>
+            <div class="ligne"><dt>Entreprise</dt>
+              <dd><strong>Maison Verline</strong> — cosmétique solide, Annecy (74) · 12&nbsp;salariés<span class="src">site + registre</span></dd></div>
+            <div class="ligne"><dt>Le signal</dt>
+              <dd>Lancement d'une gamme de coffrets cadeaux annoncé le 12&nbsp;juin, et passage du flacon plastique au verre sur trois références.<span class="src">page actualités</span><br><span style="color:var(--encre-douce);font-size:.9rem">Un changement de contenant force un changement de calage&nbsp;: c'est le moment où l'on achète de l'emballage.</span></dd></div>
+            <div class="ligne"><dt>Interlocuteur</dt>
+              <dd>Fondatrice et gérante — coordonnée professionnelle vérifiée<span class="src">mentions légales</span><br><span style="color:var(--encre-douce);font-size:.9rem">Quand la personne n'est pas publiquement identifiable, la fiche le dit et donne l'entrée la plus directe.</span></dd></div>
+            <div class="ligne"><dt>Volume estimé</dt>
+              <dd>≈&nbsp;1&nbsp;500 commandes/mois <span style="color:var(--encre-douce);font-size:.9rem">— estimation, confiance moyenne&nbsp;: la fiche affiche toujours son degré de certitude.</span></dd></div>
+          </dl>
+          <div class="msg">
+            <p style="font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:var(--encre-douce)">Le premier message, déjà rédigé</p>
+            <p>Bonjour&nbsp;X,</p>
+            <p>Vous passez trois références du plastique au verre et vous sortez des coffrets pour les fêtes&nbsp;: le calage et l'étui vont devoir suivre, et rarement avec les mêmes fournisseurs.</p>
+            <p>Nous fabriquons des étuis et calages sur mesure en petites séries, dès 250 unités. Si c'est un sujet en ce moment, je vous envoie deux ou trois pistes de format adaptées au verre.</p>
+          </div>
+        </div>
+        <div class="fiche-pied">Exemple reconstitué à des fins d'illustration — <strong>l'entreprise et la personne sont fictives</strong>. Les fiches réelles portent des sources cliquables, consultables une par une.</div>
+      </article>
+
+      <p class="apres">Sur votre cible à vous, en quinze minutes, nous en produisons trois et nous vous les envoyons — que vous deveniez client ou non. <a href="mailto:contact@apporta.fr">Dites-nous simplement qui vous cherchez.</a></p>
+    </div>
+  </section>
+
+  <!-- ─────────────── LA MÉTHODE ─────────────── -->
+  <section class="bloc" id="methode">
+    <div class="conteneur">
+      <p class="etiquette">La méthode</p>
+      <h2>Trois temps, chaque semaine.</h2>
+      <div class="grille">
+        <article class="carte">
+          <span class="numero" aria-hidden="true">1</span>
+          <h3>Nous cherchons large</h3>
+          <p>Registre Sirene, sites d'entreprise, annuaires professionnels, presse en ligne&nbsp;: nous balayons les sources publiques pour repérer les entreprises qui ressemblent à vos meilleurs clients.</p>
+        </article>
+        <article class="carte">
+          <span class="numero" aria-hidden="true">2</span>
+          <h3>Nous qualifions et vérifions</h3>
+          <p>Chaque entreprise est passée au crible de votre grille&nbsp;: activité réelle, taille, signaux d'achat observables. Quand le décideur est publiquement identifiable, nous le nommons et vérifions ses coordonnées à la source&nbsp;; sinon nous donnons l'entrée la plus directe, et la fiche le dit. Ce qui ne passe pas le crible n'entre pas dans votre liste.</p>
+        </article>
+        <article class="carte">
+          <span class="numero" aria-hidden="true">3</span>
+          <h3>Vous recevez, prêt à contacter</h3>
+          <p>Des fiches complètes&nbsp;: l'entreprise, l'interlocuteur, le fait précis qui justifie la prise de contact — et le premier message, déjà rédigé, ancré sur ce fait. Chaque fiche indique d'où vient l'information, et ce qu'elle ne contient pas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── POUR QUI ─────────────── -->
+  <section class="bloc fond-doux" id="pour-qui">
+    <div class="conteneur">
+      <p class="etiquette">Pour qui</p>
+      <h2>Trois métiers que nous savons servir.</h2>
+      <p class="intro-bloc">Notre terrain, c'est l'écosystème du commerce en ligne français. Nous travaillons pour les entreprises dont les clients en font partie.</p>
+      <div class="grille">
+        <article class="carte">
+          <h3>Agences e&#8209;commerce</h3>
+          <p>Vous concevez ou faites croître des boutiques en ligne. Nous repérons les marques qui recrutent en marketing, refondent leur site ou viennent de lever des fonds — au moment où elles cherchent un partenaire.</p>
+        </article>
+        <article class="carte">
+          <h3>Emballage &amp; conditionnement</h3>
+          <p>Vous fabriquez ou distribuez de l'emballage pour les marques qui vendent en ligne. Nous repérons celles qui lancent un produit, changent de format ou passent au verre — au moment où elles achètent.</p>
+        </article>
+        <article class="carte">
+          <h3>Transport &amp; messagerie régionale</h3>
+          <p>Vous livrez les e&#8209;commerçants de votre région. Nous repérons ceux qui expédient en volume, du lourd ou du fragile — le profil d'expéditeurs que vous savez servir.</p>
+        </article>
+      </div>
+      <p class="note-honnete">Votre métier n'est pas dans cette liste&nbsp;? Écrivez-nous quand même&nbsp;: nous vous dirons franchement si nous savons servir votre cible — et nous vous le dirons aussi quand ce n'est pas le cas.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────── L'OFFRE ─────────────── -->
+  <section class="bloc" id="offre">
+    <div class="conteneur">
+      <p class="etiquette">L'offre</p>
+      <h2>Une structure simple, sans surprise.</h2>
+      <div class="grille-offre">
+        <article class="offre">
+          <p class="cadre">Pour commencer</p>
+          <h3>Le pilote — 14&nbsp;jours</h3>
+          <p class="prix">290 à 490 € — déductible de l'abonnement</p>
+          <ul>
+            <li>Nous calibrons la recherche sur votre cible, avec vous.</li>
+            <li>Vous recevez vos premières fiches, complètes, réelles.</li>
+            <li>Vous jugez sur pièces. Si vous continuez, le pilote est déduit.</li>
+          </ul>
+        </article>
+        <article class="offre principale">
+          <p class="cadre">Pour durer</p>
+          <h3>L'abonnement — mensuel</h3>
+          <p class="prix">à partir de 590 € par mois · mise en route&nbsp;: à partir de 500 €</p>
+          <ul>
+            <li>jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, prêts à contacter.</li>
+            <li>Mise en route&nbsp;: calibrage fin de votre ciblage et prise en main.</li>
+            <li>Sans engagement de durée — l'abonnement s'arrête quand vous le décidez.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note-prix">Deux formules selon le volume — nous calons ensemble celle qui correspond au gisement réel de votre cible, après le pilote. Prix hors taxes ; TVA non applicable (franchise en base).</p>
+      <div class="engagement">
+        <p>Pas de commission au succès. Pas de facturation au rendez-vous. Nous livrons des prospects qualifiés et vérifiés — la conversation et la vente restent les vôtres.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── QUI EST DERRIÈRE ─────────────── -->
+  <section class="qui" id="qui">
+    <div class="conteneur">
+      <p class="cadre">Qui est derrière</p>
+      <h2>Une personne, pas une agence.</h2>
+      <div class="qui-bloc">
+        <div class="qui-initiale" aria-hidden="true">M</div>
+        <div>
+          <p>Apporta est conçu et opéré par <strong>Melvil Burri-Brand</strong>, indépendant, à Lyon. C'est moi qui calibre votre ciblage, qui contrôle les fiches avant qu'elles partent, et qui réponds quand vous écrivez. Vous n'aurez jamais un chargé de compte différent tous les trimestres.</p>
+          <p>Le moteur qui produit les fiches n'est pas une maquette&nbsp;: il tourne en conditions réelles depuis plusieurs mois chez un premier utilisateur. Mais vous n'avez pas à me croire sur parole — c'est exactement pour ça que le pilote de quatorze jours existe, et que je vous montre des fiches avant même que vous ne payiez quoi que ce soit.</p>
+          <p class="franchise">Ce que je ne fais pas&nbsp;: je n'envoie rien à votre place, je ne prends aucune commission sur vos ventes, et je ne vous promets ni rendez-vous ni chiffre d'affaires. Je fournis la matière première, triée et vérifiée. La relation avec votre marché reste la vôtre — c'est la partie qui a de la valeur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── CONTACT ─────────────── -->
+  <section class="contact" id="contact">
+    <div class="conteneur">
+      <h2>Parlons de votre cible.</h2>
+      <p>Un email suffit. Décrivez votre client idéal en trois lignes&nbsp;: nous vous répondons avec un avis franc — y compris si Apporta n'est pas le bon outil pour vous.</p>
+      <a class="bouton" href="mailto:contact@apporta.fr">contact@apporta.fr</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="conteneur">
+    <nav aria-label="Liens légaux">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/information-prospection">Données personnelles &amp; prospection</a>
+    </nav>
+    <p>© 2026 Apporta — Tous droits réservés.</p>
+    <p class="mention-tracage">Ce site ne dépose aucun cookie et n'utilise aucun traceur.</p>
+  </div>
+</footer>
+</body>
+</html>

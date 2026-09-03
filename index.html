@@ -176,6 +176,57 @@ footer.site nav a{margin-right:1.6rem}
                 color:var(--encre-douce)}
 @media(max-width:640px){.qui-bloc{grid-template-columns:1fr;gap:1.4rem}
   .qui-initiale{width:5.5rem;height:5.5rem;font-size:2.4rem}}
+
+/* ═══ OÙ NOUS SITUER — comparatif + arithmétique ═══ */
+.situer .carte{display:flex;flex-direction:column}
+.situer .carte.nous{border-color:var(--marque);border-width:2px}
+.situer .carte h3{margin-bottom:.2rem}
+.situer .carte .tarif{color:var(--marque-fonce);font-size:.95rem;margin-bottom:1.1rem;
+                      padding-bottom:1.1rem;border-bottom:1px solid var(--filet)}
+.situer dl{margin:0}
+.situer dt{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--encre-douce);margin-top:.9rem}
+.situer dd{margin:.15rem 0 0;font-size:.98rem;color:var(--encre)}
+.situer .carte:not(.nous) dd{color:var(--encre-douce)}
+.calcul{margin-top:3rem;border:1px solid var(--filet);border-radius:6px;overflow:hidden;max-width:52rem}
+.calcul-tete{background:var(--marque-clair);padding:1.15rem 1.6rem;border-bottom:1px solid var(--filet)}
+.calcul-tete h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;color:var(--marque-fonce)}
+.calcul-corps{padding:1.6rem}
+.calcul table{width:100%;border-collapse:collapse;margin:1.2rem 0 .4rem;font-size:.98rem}
+.calcul th,.calcul td{text-align:left;padding:.62rem .4rem;border-bottom:1px solid var(--filet)}
+.calcul th{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--encre-douce);font-weight:400}
+.calcul td:last-child{font-family:var(--serif);font-size:1.05rem;color:var(--marque-fonce);white-space:nowrap}
+.calcul tr:last-child td{border-bottom:0}
+.calcul .apres-calcul{color:var(--encre-douce);font-size:.98rem;margin-top:1rem}
+
+/* ═══ CE QUI EST GARANTI ═══ */
+.garanties{padding:5rem 0;background:var(--fond-doux);border-top:1px solid var(--filet)}
+.liste-garanties{list-style:none;margin-top:2.4rem;max-width:56rem;display:grid;
+                 grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.liste-garanties li{background:var(--fond);border:1px solid var(--filet);border-left:3px solid var(--marque);
+                    border-radius:6px;padding:1.6rem}
+.liste-garanties strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.15rem;
+                        margin-bottom:.6rem;color:var(--encre)}
+.liste-garanties p{color:var(--encre-douce);font-size:.98rem}
+.liste-garanties .article{display:inline-block;margin-top:.8rem;font-size:.75rem;color:var(--marque);
+                          background:var(--marque-clair);padding:.12rem .5rem;border-radius:3px}
+.contrepartie{margin-top:2.4rem;max-width:62ch;padding-left:1.1rem;border-left:3px solid var(--filet);
+              color:var(--encre-douce)}
+@media(max-width:840px){.liste-garanties{grid-template-columns:1fr}}
+
+/* ═══ QUESTIONS FRÉQUENTES ═══ */
+.faq{padding:5rem 0;border-top:1px solid var(--filet)}
+.faq .lot{margin-top:2.4rem;max-width:52rem;border-top:1px solid var(--filet)}
+.faq details{border-bottom:1px solid var(--filet)}
+.faq summary{cursor:pointer;padding:1.15rem 2.4rem 1.15rem 0;position:relative;list-style:none;
+             font-size:1.05rem;color:var(--encre)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.4rem;top:1rem;color:var(--marque);
+                    font-size:1.35rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq summary:hover{color:var(--marque)}
+.faq details > div{padding:0 0 1.4rem;color:var(--encre-douce);max-width:60ch}
+.faq details > div p{margin-bottom:.8rem}
+.faq details > div p:last-child{margin-bottom:0}
 </style>
 <link rel="canonical" href="https://apporta.fr/">
 <meta name="robots" content="index,follow">
@@ -225,6 +276,95 @@ footer.site nav a{margin-right:1.6rem}
   }
 }
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "@id": "https://apporta.fr/#faq",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Combien de rendez-vous garantissez-vous ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Aucun, et c’est écrit dans nos conditions générales. Nous ne contrôlons ni votre offre, ni votre manière de relancer, ni l’état de votre marché — trois facteurs qui pèsent autant que la qualité d’une fiche. Ce que nous garantissons, c’est le travail : une entreprise dans votre cible, un fait daté qui justifie la prise de contact, des coordonnées vérifiées à la source, et un premier message déjà rédigé. Un prestataire qui vous promet un nombre de rendez-vous vous promet quelque chose qui ne lui appartient pas."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Pourquoi 590 € quand il existe des outils à 100 € par mois ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Parce qu’un outil vous vend l’accès à une base ; il vous reste à cibler, filtrer, vérifier, écrire et relancer. C’est plusieurs heures par semaine, prises sur votre vrai métier. Notre prix n’achète pas un logiciel : il achète le travail qui va avec. Si vous avez le temps et l’appétit de le faire vous-même, un outil vous coûtera moins cher — et nous vous le dirons franchement."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "J’ai vu des services de fiches moins chers. Quelle différence ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Elles existent, et elles peuvent très bien vous convenir. Deux différences comptent. La première : la plupart envoient les messages sous leur propre signature et vous transmettent les répondants. Vos premiers échanges ne vous appartiennent pas. Chez nous, l’envoi reste chez vous, sous votre nom. La seconde : beaucoup puisent dans une base achetée, quand nous partons d’un fait observé et daté sur le site de l’entreprise. Un fichier vieillit ; un signal, lui, se produit. Si votre besoin est du volume de contacts au coût le plus bas, dites-le-nous — nous vous répondrons que ce n’est pas notre métier."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "D’où viennent vos données, et est-ce conforme au RGPD ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "De sources publiques uniquement : registre Sirene, sites d’entreprise, annuaires professionnels, presse en ligne. Chaque fiche indique d’où vient chaque information, et vous pouvez la vérifier. Le traitement repose sur l’intérêt légitime en prospection professionnelle. Toute personne concernée peut s’y opposer à tout moment, gratuitement et sans justification : la marche à suivre est sur notre page d’information, et elle est rappelée dans chaque message que nous rédigeons."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Envoyez-vous les messages à ma place ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non, jamais. Nous rédigeons le premier message ; c’est vous qui l’envoyez, depuis vos outils, sous votre signature — et vous le modifiez si vous le souhaitez. Ce n’est pas une limite technique, c’est un choix. La relation avec votre marché est la partie qui a de la valeur : elle doit vous rester."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Et si les fiches ne correspondent pas à ma cible ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "C’est précisément ce que le pilote de quatorze jours sert à découvrir, avant tout abonnement : vous recevez de vraies fiches sur votre vraie cible, et vous jugez sur pièces. En cours d’abonnement, le ciblage se recale : c’est un réglage, pas une renégociation. Dites-nous ce qui n’allait pas dans une fiche, et la grille change."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Combien de temps avant les premières fiches ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Le calibrage prend quelques jours : nous partons de vos meilleurs clients actuels pour construire votre grille. Les premières fiches arrivent pendant le pilote, donc dans les deux semaines. Ensuite, la livraison est hebdomadaire. Si une semaine ne donne rien — gisement épuisé, aléa technique — nous vous le disons ; nous ne comblons pas un trou avec des fiches médiocres."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Travaillez-vous pour mes concurrents ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nous puisons dans un vivier commun : si deux clients d’un même métier nous font confiance, la même entreprise peut apparaître chez les deux. Nous préférons le dire avant qu’après. Si l’exclusivité sur un segment ou un territoire vous est nécessaire, parlons-en avant de commencer : c’est une condition qui se convient, pas une surprise qui se découvre."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Vous êtes seul. Que se passe-t-il si vous n’êtes pas disponible ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "C’est le revers assumé de « une personne, pas une agence » : vous avez toujours le même interlocuteur, et cet interlocuteur peut être indisponible. Nous ne le masquons pas derrière un taux de disponibilité inventé. Concrètement, vous êtes protégé par trois choses écrites au contrat : vos données s’exportent à tout moment sans passer par nous, un mois entier non servi de notre fait n’est pas facturé, et vous n’avez aucun engagement de durée. Vous n’êtes jamais captif."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Si j’arrête, que deviennent mes données ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Elles vous sont remises en intégralité, en CSV, et nous supprimons nos copies dans les trente jours. C’est un article de nos conditions générales, pas un geste commercial. Vous n’avez pas non plus à attendre la fin pour les récupérer : l’export est disponible à tout moment pendant l’abonnement."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="saut" href="#principal">Aller au contenu</a>
@@ -232,7 +372,7 @@ footer.site nav a{margin-right:1.6rem}
 <header class="site">
   <div class="conteneur barre">
     <a class="marque-nom" href="/">Apporta<span class="point">.</span></a>
-    <nav class="principale" aria-label="Navigation principale"><a href="#preuve">La preuve</a><a href="#methode">La méthode</a><a href="#offre">L'offre</a><a href="#qui">Qui je suis</a><a href="#contact">Contact</a></nav>
+    <nav class="principale" aria-label="Navigation principale"><a href="#preuve">La preuve</a><a href="#methode">La méthode</a><a href="#situer">Nous situer</a><a href="#offre">L'offre</a><a href="#questions">Questions</a><a href="#qui">Qui je suis</a><a href="#contact">Contact</a></nav>
   </div>
 </header>
 
@@ -337,6 +477,66 @@ footer.site nav a{margin-right:1.6rem}
     </div>
   </section>
 
+  <!-- ─────────────── OÙ NOUS SITUER ─────────────── -->
+  <section class="bloc situer" id="situer">
+    <div class="conteneur">
+      <p class="etiquette">Où nous situer</p>
+      <h2>Trois façons d'acheter de la prospection.</h2>
+      <p class="intro-bloc">Nous ne sommes ni un logiciel, ni une agence. Plutôt que de vous laisser le deviner, voici la comparaison — avec les ordres de prix publics constatés sur le marché français en 2026.</p>
+      <div class="grille">
+
+        <article class="carte">
+          <h3>Un outil</h3>
+          <p class="tarif">Environ 25 à 150 € par mois</p>
+          <dl>
+            <dt>Ce que vous recevez</dt><dd>Un logiciel et l'accès à une base de contacts.</dd>
+            <dt>Ce qu'il vous reste à faire</dt><dd>Cibler, filtrer, vérifier, écrire, envoyer, relancer. Tout.</dd>
+            <dt>Qui parle à votre marché</dt><dd>Vous — si vous en trouvez le temps.</dd>
+          </dl>
+        </article>
+
+        <article class="carte">
+          <h3>Une agence</h3>
+          <p class="tarif">À partir d'environ 750 €, couramment 1 500 à 8 000 € par mois</p>
+          <dl>
+            <dt>Ce que vous recevez</dt><dd>Des rendez-vous posés dans votre agenda.</dd>
+            <dt>Ce qu'il vous reste à faire</dt><dd>Rien avant le rendez-vous.</dd>
+            <dt>Qui parle à votre marché</dt><dd>Une équipe extérieure, sous votre nom. Vos premiers échanges ne vous appartiennent pas.</dd>
+          </dl>
+        </article>
+
+        <article class="carte nous">
+          <h3>Apporta</h3>
+          <p class="tarif">À partir de 590 € par mois</p>
+          <dl>
+            <dt>Ce que vous recevez</dt><dd>Des fiches qualifiées sur un fait daté, coordonnées vérifiées, premier message rédigé.</dd>
+            <dt>Ce qu'il vous reste à faire</dt><dd>Envoyer, et vendre.</dd>
+            <dt>Qui parle à votre marché</dt><dd>Vous. Sous votre signature, à votre rythme — la relation reste la vôtre.</dd>
+          </dl>
+        </article>
+
+      </div>
+
+      <div class="calcul">
+        <div class="calcul-tete"><h3>« Et en rendez-vous, ça donne quoi ? »</h3></div>
+        <div class="calcul-corps">
+          <p>C'est la bonne question, et nous n'y répondrons pas par un taux inventé. Une agence facture le rendez-vous entre 150 et 400 € (prix publics constatés). Chez nous, la même somme achète de la matière&nbsp;: à 590 € pour jusqu'à 40 fiches, la fiche revient à moins de 15 €.</p>
+          <p>Combien de fiches faut-il pour un rendez-vous sur <em>votre</em> marché&nbsp;? Nous ne le savons pas encore, et nous ne l'inventerons pas. Voici le calcul&nbsp;: l'hypothèse vous appartient.</p>
+          <table>
+            <thead><tr><th scope="col">Si 40 fiches vous donnent…</th><th scope="col">Le rendez-vous vous revient à</th></tr></thead>
+            <tbody>
+              <tr><td>1 rendez-vous</td><td>590 €</td></tr>
+              <tr><td>2 rendez-vous</td><td>295 €</td></tr>
+              <tr><td>4 rendez-vous</td><td>148 €</td></tr>
+              <tr><td>8 rendez-vous</td><td>74 €</td></tr>
+            </tbody>
+          </table>
+          <p class="apres-calcul">À partir de deux rendez-vous par mois, vous êtes dans la fourchette du marché&nbsp;; à partir de quatre, en dessous. Nous ne vous promettons ni l'un ni l'autre&nbsp;: votre offre et votre manière de relancer décident autant que nos fiches. C'est exactement pour cela que le pilote de quatorze jours existe — vous mesurez avant de vous abonner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─────────────── L'OFFRE ─────────────── -->
   <section class="bloc" id="offre">
     <div class="conteneur">
@@ -371,6 +571,36 @@ footer.site nav a{margin-right:1.6rem}
     </div>
   </section>
 
+
+  <!-- ─────────────── CE QUI EST GARANTI ─────────────── -->
+  <section class="garanties" id="garanties">
+    <div class="conteneur">
+      <p class="etiquette">Nos engagements</p>
+      <h2>Ce que nous garantissons — et ce que nous ne garantissons pas.</h2>
+      <p class="intro-bloc">Trois engagements, écrits dans nos conditions générales, article par article. Vous pouvez nous les opposer.</p>
+
+      <ul class="liste-garanties">
+        <li>
+          <strong>Vos données sont à vous</strong>
+          <p>Vous les exportez en CSV quand vous voulez, sans nous le demander. Si vous partez, nous vous remettons l'export complet et nous supprimons nos copies sous trente jours.</p>
+          <span class="article">CGV art. 13</span>
+        </li>
+        <li>
+          <strong>Un mois sans livraison n'est pas facturé</strong>
+          <p>Si, de notre fait, aucune livraison n'intervient pendant un mois d'abonnement entier, ce mois vous est remboursé ou n'est pas facturé — à votre choix, pas au nôtre.</p>
+          <span class="article">CGV art. 8.3</span>
+        </li>
+        <li>
+          <strong>Vous arrêtez quand vous voulez</strong>
+          <p>Aucun engagement de durée, aucun préavis de plusieurs mois, aucune reconduction qui se déclenche pendant que vous regardiez ailleurs.</p>
+          <span class="article">CGV art. 7</span>
+        </li>
+      </ul>
+
+      <p class="contrepartie">Ce que nous ne garantissons pas, et nous préférons l'écrire noir sur blanc&nbsp;: ni réponses, ni rendez-vous, ni ventes. Apporta est opéré par une structure individuelle — annoncer une disponibilité «&nbsp;entreprise&nbsp;» de 99,9&nbsp;% serait malhonnête, et nous ne le ferons pas. La contrepartie de cette franchise, ce sont les trois engagements ci-dessus&nbsp;: vous n'êtes jamais captif, et vous ne payez pas un mois que nous n'avons pas servi.</p>
+    </div>
+  </section>
+
   <!-- ─────────────── QUI EST DERRIÈRE ─────────────── -->
   <section class="qui" id="qui">
     <div class="conteneur">
@@ -383,6 +613,88 @@ footer.site nav a{margin-right:1.6rem}
           <p>Le moteur qui produit les fiches n'est pas une maquette&nbsp;: il tourne en conditions réelles depuis plusieurs mois chez un premier utilisateur. Mais vous n'avez pas à me croire sur parole — c'est exactement pour ça que le pilote de quatorze jours existe, et que je vous montre des fiches avant même que vous ne payiez quoi que ce soit.</p>
           <p class="franchise">Ce que je ne fais pas&nbsp;: je n'envoie rien à votre place, je ne prends aucune commission sur vos ventes, et je ne vous promets ni rendez-vous ni chiffre d'affaires. Je fournis la matière première, triée et vérifiée. La relation avec votre marché reste la vôtre — c'est la partie qui a de la valeur.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────── QUESTIONS FRÉQUENTES ─────────────── -->
+  <section class="faq" id="questions">
+    <div class="conteneur">
+      <p class="etiquette">Questions fréquentes</p>
+      <h2>Ce qu'on nous demande avant de signer.</h2>
+      <div class="lot">
+        <details>
+          <summary>Combien de rendez-vous garantissez-vous&nbsp;?</summary>
+          <div>
+            <p>Aucun, et c&rsquo;est écrit dans nos conditions générales. Nous ne contrôlons ni votre offre, ni votre manière de relancer, ni l&rsquo;état de votre marché — trois facteurs qui pèsent autant que la qualité d&rsquo;une fiche.</p>
+            <p>Ce que nous garantissons, c&rsquo;est le travail&nbsp;: une entreprise dans votre cible, un fait daté qui justifie la prise de contact, des coordonnées vérifiées à la source, et un premier message déjà rédigé. Un prestataire qui vous promet un nombre de rendez-vous vous promet quelque chose qui ne lui appartient pas.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Pourquoi 590 € quand il existe des outils à 100 € par mois&nbsp;?</summary>
+          <div>
+            <p>Parce qu&rsquo;un outil vous vend l&rsquo;accès à une base&nbsp;; il vous reste à cibler, filtrer, vérifier, écrire et relancer. C&rsquo;est plusieurs heures par semaine, prises sur votre vrai métier.</p>
+            <p>Notre prix n&rsquo;achète pas un logiciel&nbsp;: il achète le travail qui va avec. Si vous avez le temps et l&rsquo;appétit de le faire vous-même, un outil vous coûtera moins cher — et nous vous le dirons franchement.</p>
+          </div>
+        </details>
+        <details>
+          <summary>J&rsquo;ai vu des services de fiches moins chers. Quelle différence&nbsp;?</summary>
+          <div>
+            <p>Elles existent, et elles peuvent très bien vous convenir. Deux différences comptent.</p>
+            <p>La première&nbsp;: la plupart envoient les messages sous leur propre signature et vous transmettent les répondants. Vos premiers échanges ne vous appartiennent pas. Chez nous, l&rsquo;envoi reste chez vous, sous votre nom.</p>
+            <p>La seconde&nbsp;: beaucoup puisent dans une base achetée, quand nous partons d&rsquo;un fait observé et daté sur le site de l&rsquo;entreprise. Un fichier vieillit&nbsp;; un signal, lui, se produit. Si votre besoin est du volume de contacts au coût le plus bas, dites-le-nous — nous vous répondrons que ce n&rsquo;est pas notre métier.</p>
+          </div>
+        </details>
+        <details>
+          <summary>D&rsquo;où viennent vos données, et est-ce conforme au RGPD&nbsp;?</summary>
+          <div>
+            <p>De sources publiques uniquement&nbsp;: registre Sirene, sites d&rsquo;entreprise, annuaires professionnels, presse en ligne. Chaque fiche indique d&rsquo;où vient chaque information, et vous pouvez la vérifier.</p>
+            <p>Le traitement repose sur l&rsquo;intérêt légitime en prospection professionnelle. Toute personne concernée peut s&rsquo;y opposer à tout moment, gratuitement et sans justification&nbsp;: la marche à suivre est sur notre <a href="/information-prospection">page d&rsquo;information</a>, et elle est rappelée dans chaque message que nous rédigeons.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Envoyez-vous les messages à ma place&nbsp;?</summary>
+          <div>
+            <p>Non, jamais. Nous rédigeons le premier message&nbsp;; c&rsquo;est vous qui l&rsquo;envoyez, depuis vos outils, sous votre signature — et vous le modifiez si vous le souhaitez.</p>
+            <p>Ce n&rsquo;est pas une limite technique, c&rsquo;est un choix. La relation avec votre marché est la partie qui a de la valeur&nbsp;: elle doit vous rester.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Et si les fiches ne correspondent pas à ma cible&nbsp;?</summary>
+          <div>
+            <p>C&rsquo;est précisément ce que le pilote de quatorze jours sert à découvrir, avant tout abonnement&nbsp;: vous recevez de vraies fiches sur votre vraie cible, et vous jugez sur pièces.</p>
+            <p>En cours d&rsquo;abonnement, le ciblage se recale&nbsp;: c&rsquo;est un réglage, pas une renégociation. Dites-nous ce qui n&rsquo;allait pas dans une fiche, et la grille change.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Combien de temps avant les premières fiches&nbsp;?</summary>
+          <div>
+            <p>Le calibrage prend quelques jours&nbsp;: nous partons de vos meilleurs clients actuels pour construire votre grille. Les premières fiches arrivent pendant le pilote, donc dans les deux semaines.</p>
+            <p>Ensuite, la livraison est hebdomadaire. Si une semaine ne donne rien — gisement épuisé, aléa technique — nous vous le disons&nbsp;; nous ne comblons pas un trou avec des fiches médiocres.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Travaillez-vous pour mes concurrents&nbsp;?</summary>
+          <div>
+            <p>Nous puisons dans un vivier commun&nbsp;: si deux clients d&rsquo;un même métier nous font confiance, la même entreprise peut apparaître chez les deux.</p>
+            <p>Nous préférons le dire avant qu&rsquo;après. Si l&rsquo;exclusivité sur un segment ou un territoire vous est nécessaire, parlons-en avant de commencer&nbsp;: c&rsquo;est une condition qui se convient, pas une surprise qui se découvre.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Vous êtes seul. Que se passe-t-il si vous n&rsquo;êtes pas disponible&nbsp;?</summary>
+          <div>
+            <p>C&rsquo;est le revers assumé de «&nbsp;une personne, pas une agence&nbsp;»&nbsp;: vous avez toujours le même interlocuteur, et cet interlocuteur peut être indisponible. Nous ne le masquons pas derrière un taux de disponibilité inventé.</p>
+            <p>Concrètement, vous êtes protégé par trois choses écrites au contrat&nbsp;: vos données s&rsquo;exportent à tout moment sans passer par nous, un mois entier non servi de notre fait n&rsquo;est pas facturé, et vous n&rsquo;avez aucun engagement de durée. Vous n&rsquo;êtes jamais captif.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Si j&rsquo;arrête, que deviennent mes données&nbsp;?</summary>
+          <div>
+            <p>Elles vous sont remises en intégralité, en CSV, et nous supprimons nos copies dans les trente jours. C&rsquo;est un article de nos conditions générales, pas un geste commercial.</p>
+            <p>Vous n&rsquo;avez pas non plus à attendre la fin pour les récupérer&nbsp;: l&rsquo;export est disponible à tout moment pendant l&rsquo;abonnement.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>

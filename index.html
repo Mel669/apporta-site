@@ -1,23 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!--
-  ═══════════════════════════════════════════════════════════════════
-  APPORTA — page d'accueil (apporta.fr)
-  FAIL-CLOSED : jetons à remplir AVANT toute mise en ligne.
-  Un jeton non rempli restant = la page NE PART PAS.
-
-    contact@apporta.fr           — adresse email de contact (2 liens mailto : bouton du héros
-                          + bouton du bloc contact, dont l'adresse est aussi le libellé)
-    290 à 490 €       — prix du pilote 14 jours (ex. « 390 € »)
-    à partir de 500 €        — prix de la mise en route (ex. « 600 € »)
-    à partir de 590 €   — prix mensuel de l'abonnement (ex. « 690 € »)
-
-  Vérification rapide : lancer le contrôle du README §1 → 0 résultat attendu.
-  ═══════════════════════════════════════════════════════════════════
--->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
 <title>Apporta — Des prospects qualifiés, pas des listes</title>
 <meta name="description" content="Apporta : jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, en abonnement, pas de commission. Fiches prêtes à contacter : entreprise qualifiée sur un fait daté, interlocuteur et coordonnées vérifiées à la source, premier message rédigé.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314524a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23ffffff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
@@ -38,7 +24,11 @@
    de gamme ; texte courant en sans système = lisibilité, 0 dépendance.
    ================================================================== */
 :root{
+  /* « only » (et pas « light » seul) neutralise l'Auto Dark Theme de Chrome Android,
+     qui inverserait algorithmiquement la palette et tous les contrastes calculés. */
+  color-scheme: only light;
   --marque:#14524a;
+  --anneau:#14524a;
   --marque-fonce:#0d3b35;
   --marque-clair:#eef4f2;
   --encre:#1e2a26;
@@ -50,14 +40,16 @@
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:6.5rem}
 body{font-family:var(--sans);color:var(--encre);background:var(--fond);line-height:1.65;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
 .conteneur{max-width:66rem;margin:0 auto;padding:0 1.5rem}
 a{color:var(--marque)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--marque);outline-offset:3px;border-radius:2px}
+/* L'anneau de focus hérite de --anneau : sur les sections vert sapin (.preuve, .contact)
+   il passe en blanc, sinon il serait #14524a sur #14524a — invisible (1,00:1). */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--anneau);outline-offset:3px;border-radius:2px}
 
 /* Accès rapide clavier */
-.saut{position:absolute;left:-999px;top:0;background:var(--marque);color:#fff;padding:.6rem 1rem;z-index:10}
+.saut{position:absolute;left:-999px;top:0;background:var(--marque);color:#fff;padding:.6rem 1rem;z-index:30}
 .saut:focus{left:1rem;top:1rem}
 
 /* En-tête */
@@ -131,6 +123,46 @@ footer.site nav a{margin-right:1.6rem}
   nav.principale a{margin-left:0;margin-right:1rem}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* En-tête collant — DESKTOP UNIQUEMENT.
+   En mobile la nav se replie sur 3 rangées (184 px à 320 px, soit 29 % du viewport) :
+   collante, elle mangerait l'écran à chaque défilement. D'où le garde min-width. */
+@media(min-width:840px){
+  header.site{position:sticky;top:0;z-index:20;background:var(--fond)}
+  .barre .bouton{padding:.5rem 1.15rem;font-size:.92rem;align-self:center}
+  .barre .ecrire{display:none}
+}
+/* Sous 840 px : la nav disparaît au profit d'un seul lien d'action.
+   L'en-tête passe de 184 px à ~74 px, et la cible tactile de 28 px à ~44 px. */
+@media(max-width:839px){
+  nav.principale{display:none}
+  .barre .bouton{display:none}
+  .barre{padding-top:1rem;padding-bottom:1rem}
+  .barre .ecrire{display:inline-block;padding:.45rem 0;font-size:1rem;color:var(--marque);text-decoration:none;font-weight:600}
+  .barre .ecrire:hover{text-decoration:underline;text-underline-offset:4px}
+}
+
+/* Anneau de focus lisible sur les deux sections vert sapin */
+.contact,.preuve{--anneau:#ffffff}
+
+/* Relances en flux, aux deux points de décision */
+.relance{margin-top:2.4rem}
+.preuve .bouton{background:#fff;color:var(--marque-fonce);margin-top:1.6rem}
+.preuve .bouton:hover{background:var(--marque-clair)}
+
+/* Héros : réassurance sous les actions + signature */
+.rassurance{margin-top:1rem;font-size:.92rem;color:var(--encre-douce);max-width:52ch}
+.signature-heros{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--filet);max-width:60ch;font-size:.95rem;color:var(--encre-douce)}
+.signature-heros strong{color:var(--encre);font-weight:600}
+
+/* Héros en mobile : le bouton passe au-dessus du pli sur tout le parc 320-393 px */
+@media(max-width:640px){
+  .heros{padding:2.4rem 0 3rem}
+  .heros .actions{flex-direction:column;align-items:stretch;gap:.75rem;margin-top:1.8rem}
+  .heros .bouton{display:block;width:100%;text-align:center;padding:1rem 1.5rem;font-size:1.05rem}
+  .heros .lien-doux{display:block;text-align:center;padding:.6rem 0}
+  .heros .detail{margin-top:1.8rem}
+}
 
 /* Note sous la grille tarifaire */
 .note-prix{max-width:60ch;margin:1.6rem auto 0;text-align:center;font-size:.94rem;color:var(--encre-douce)}
@@ -266,14 +298,21 @@ footer.site nav a{margin-right:1.6rem}
   },
   "address":{"@type":"PostalAddress","addressLocality":"Tassin-la-Demi-Lune","postalCode":"69160","addressCountry":"FR"},
   "knowsLanguage":"fr",
-  "offers":{
+  "offers":[{
     "@type":"Offer",
-    "name":"Abonnement Apporta",
+    "name":"Apporta Essentiel",
     "priceCurrency":"EUR",
     "price":"590",
     "priceSpecification":{"@type":"UnitPriceSpecification","price":"590","priceCurrency":"EUR","unitCode":"MON","valueAddedTaxIncluded":false},
     "availability":"https://schema.org/InStock"
-  }
+  },{
+    "@type":"Offer",
+    "name":"Apporta Croissance",
+    "priceCurrency":"EUR",
+    "price":"890",
+    "priceSpecification":{"@type":"UnitPriceSpecification","price":"890","priceCurrency":"EUR","unitCode":"MON","valueAddedTaxIncluded":false},
+    "availability":"https://schema.org/InStock"
+  }]
 }
 </script>
 <script type="application/ld+json">
@@ -373,6 +412,8 @@ footer.site nav a{margin-right:1.6rem}
   <div class="conteneur barre">
     <a class="marque-nom" href="/">Apporta<span class="point">.</span></a>
     <nav class="principale" aria-label="Navigation principale"><a href="#preuve">La preuve</a><a href="#methode">La méthode</a><a href="#situer">Nous situer</a><a href="#offre">L'offre</a><a href="#questions">Questions</a><a href="#qui">Qui je suis</a><a href="#contact">Contact</a></nav>
+    <a class="ecrire" href="mailto:contact@apporta.fr">Écrire&nbsp;&#8594;</a>
+    <a class="bouton" href="mailto:contact@apporta.fr">Écrivez-nous</a>
   </div>
 </header>
 
@@ -383,11 +424,13 @@ footer.site nav a{margin-right:1.6rem}
     <div class="conteneur">
       <h1>Des prospects qualifiés, pas&nbsp;des&nbsp;listes.</h1>
       <p class="formule">Apporta&nbsp;: jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, en&nbsp;abonnement, pas&nbsp;de&nbsp;commission.</p>
-      <p class="detail">Chaque semaine, des fiches prêtes à contacter&nbsp;: l'entreprise et le fait daté qui la qualifie, le décideur lorsqu'il est publiquement identifiable, ses coordonnées vérifiées à la source, et le premier message déjà rédigé. L'envoi, lui, reste entre vos mains.</p>
       <div class="actions">
-        <a class="bouton" href="mailto:contact@apporta.fr">Écrivez-nous</a>
+        <a class="bouton" href="mailto:contact@apporta.fr?subject=Trois%20fiches%20sur%20ma%20cible&amp;body=Ma%20cible%20en%20trois%20lignes%20%3A%0A-%20Secteur%20%3A%20%0A-%20Taille%20%2F%20profil%20%3A%20%0A-%20Ce%20qui%20fait%20qu%27une%20entreprise%20est%20un%20bon%20client%20pour%20moi%20%3A%0A">Recevez trois fiches sur votre cible</a>
         <a class="lien-doux" href="#methode">Comment ça marche&nbsp;↓</a>
       </div>
+      <p class="rassurance">Sur votre cible à vous — que vous deveniez client ou non. Sans engagement.</p>
+      <p class="detail">Chaque semaine, des fiches prêtes à contacter&nbsp;: l'entreprise et le fait daté qui la qualifie, le décideur lorsqu'il est publiquement identifiable, ses coordonnées vérifiées à la source, et le premier message déjà rédigé. L'envoi, lui, reste entre vos mains.</p>
+      <p class="signature-heros"><strong>Melvil Burri-Brand</strong>, indépendant à Lyon — <a href="#qui">une personne, pas une agence</a>. On démarre par un pilote de 14&nbsp;jours, déduit si vous continuez&nbsp;; ensuite, <a href="#offre">aucun engagement de durée</a>.</p>
     </div>
   </section>
 
@@ -424,7 +467,8 @@ footer.site nav a{margin-right:1.6rem}
         <div class="fiche-pied">Exemple reconstitué à des fins d'illustration — <strong>l'entreprise et la personne sont fictives</strong>. Les fiches réelles portent des sources cliquables, consultables une par une.</div>
       </article>
 
-      <p class="apres">Sur votre cible à vous, en quinze minutes, nous en produisons trois et nous vous les envoyons — que vous deveniez client ou non. <a href="mailto:contact@apporta.fr">Dites-nous simplement qui vous cherchez.</a></p>
+      <p class="apres">Sur votre cible à vous, nous en produisons trois et nous vous les envoyons — que vous deveniez client ou non. Dites-nous simplement qui vous cherchez.</p>
+      <p><a class="bouton" href="mailto:contact@apporta.fr?subject=Trois%20fiches%20sur%20ma%20cible&amp;body=Ma%20cible%20en%20trois%20lignes%20%3A%0A-%20Secteur%20%3A%20%0A-%20Taille%20%2F%20profil%20%3A%20%0A-%20Ce%20qui%20fait%20qu%27une%20entreprise%20est%20un%20bon%20client%20pour%20moi%20%3A%0A">Recevez vos trois fiches</a></p>
     </div>
   </section>
 
@@ -473,7 +517,7 @@ footer.site nav a{margin-right:1.6rem}
           <p>Vous livrez les e&#8209;commerçants de votre région. Nous repérons ceux qui expédient en volume, du lourd ou du fragile — le profil d'expéditeurs que vous savez servir.</p>
         </article>
       </div>
-      <p class="note-honnete">Votre métier n'est pas dans cette liste&nbsp;? Écrivez-nous quand même&nbsp;: nous vous dirons franchement si nous savons servir votre cible — et nous vous le dirons aussi quand ce n'est pas le cas.</p>
+      <p class="note-honnete">Votre métier n'est pas dans cette liste&nbsp;? <a href="mailto:contact@apporta.fr">Écrivez-nous quand même</a>&nbsp;: nous vous dirons franchement si nous savons servir votre cible — et nous vous le dirons aussi quand ce n'est pas le cas.</p>
     </div>
   </section>
 
@@ -507,7 +551,7 @@ footer.site nav a{margin-right:1.6rem}
 
         <article class="carte nous">
           <h3>Apporta</h3>
-          <p class="tarif">À partir de 590 € par mois</p>
+          <p class="tarif">590 € ou 890 € par mois, selon le volume</p>
           <dl>
             <dt>Ce que vous recevez</dt><dd>Des fiches qualifiées sur un fait daté, coordonnées vérifiées, premier message rédigé.</dd>
             <dt>Ce qu'il vous reste à faire</dt><dd>Envoyer, et vendre.</dd>
@@ -556,18 +600,20 @@ footer.site nav a{margin-right:1.6rem}
         <article class="offre principale">
           <p class="cadre">Pour durer</p>
           <h3>L'abonnement — mensuel</h3>
-          <p class="prix">à partir de 590 € par mois · mise en route&nbsp;: à partir de 500 €</p>
+          <p class="prix">Essentiel — 590 € par mois · mise en route 500 €<br>Croissance — 890 € par mois · mise en route 800 €</p>
           <ul>
-            <li>jusqu'à 40 ou 80 prospects qualifiés par mois, livrés chaque semaine, prêts à contacter.</li>
+            <li>Essentiel&nbsp;: jusqu'à 40 prospects qualifiés par mois. Croissance&nbsp;: jusqu'à 80. Livrés chaque semaine, prêts à contacter.</li>
+            <li>Le volume est un plafond honnête, jamais un dû&nbsp;: nous ne comblons pas une semaine creuse avec des fiches médiocres.</li>
             <li>Mise en route&nbsp;: calibrage fin de votre ciblage et prise en main.</li>
-            <li>Sans engagement de durée — l'abonnement s'arrête quand vous le décidez.</li>
+            <li>Sans engagement de durée — vous arrêtez par un email, 10&nbsp;jours avant l'échéance mensuelle.</li>
           </ul>
         </article>
       </div>
-      <p class="note-prix">Deux formules selon le volume — nous calons ensemble celle qui correspond au gisement réel de votre cible, après le pilote. Prix hors taxes ; TVA non applicable (franchise en base).</p>
+      <p class="note-prix">Nous calons ensemble celle qui correspond au gisement réel de votre cible, après le pilote. Prix hors taxes ; TVA non applicable (franchise en base).</p>
       <div class="engagement">
         <p>Pas de commission au succès. Pas de facturation au rendez-vous. Nous livrons des prospects qualifiés et vérifiés — la conversation et la vente restent les vôtres.</p>
       </div>
+      <p class="relance"><a class="bouton" href="mailto:contact@apporta.fr?subject=Pilote%2014%20jours&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20d%C3%A9marrer%20un%20pilote%20de%2014%20jours.%0AMa%20cible%20%3A%20%0A">Demander le pilote de 14 jours</a></p>
     </div>
   </section>
 
@@ -592,12 +638,13 @@ footer.site nav a{margin-right:1.6rem}
         </li>
         <li>
           <strong>Vous arrêtez quand vous voulez</strong>
-          <p>Aucun engagement de durée, aucun préavis de plusieurs mois, aucune reconduction qui se déclenche pendant que vous regardiez ailleurs.</p>
+          <p>Aucun engagement de durée. Un email, au plus tard 10&nbsp;jours avant l'échéance mensuelle, et tout s'arrête à la fin du mois en cours — sans motif à donner, sans pénalité. Envoyé plus tard, l'abonnement court un mois de plus&nbsp;: c'est le seul préavis, et il tient en dix jours.</p>
           <span class="article">CGV art. 7</span>
         </li>
       </ul>
 
       <p class="contrepartie">Ce que nous ne garantissons pas, et nous préférons l'écrire noir sur blanc&nbsp;: ni réponses, ni rendez-vous, ni ventes. Apporta est opéré par une structure individuelle — annoncer une disponibilité «&nbsp;entreprise&nbsp;» de 99,9&nbsp;% serait malhonnête, et nous ne le ferons pas. La contrepartie de cette franchise, ce sont les trois engagements ci-dessus&nbsp;: vous n'êtes jamais captif, et vous ne payez pas un mois que nous n'avons pas servi.</p>
+      <p class="relance"><a class="bouton" href="mailto:contact@apporta.fr?subject=Parlons%20de%20ma%20cible">Parlons de votre cible</a></p>
     </div>
   </section>
 
@@ -716,7 +763,7 @@ footer.site nav a{margin-right:1.6rem}
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/information-prospection">Données personnelles &amp; prospection</a>
     </nav>
-    <p>© 2026 Apporta — Tous droits réservés.</p>
+    <p>© 2026 Apporta — Melvil Burri-Brand, Lyon · SIRET 105 487 094 00010 · Tous droits réservés.</p>
     <p class="mention-tracage">Ce site ne dépose aucun cookie et n'utilise aucun traceur.</p>
   </div>
 </footer>

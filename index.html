@@ -112,6 +112,11 @@ footer.site nav{margin-bottom:1rem}
 footer.site a{color:var(--encre-douce)}
 footer.site a:hover{color:var(--marque)}
 footer.site nav a{margin-right:1.6rem}
+/* Navigation de pied : rattrape #pour-qui et #garanties, inatteignables depuis le menu.
+   Cibles tactiles à 44 px, et le seul chemin vers ces sections en mobile (nav repliée). */
+.nav-pied{display:flex;flex-wrap:wrap;gap:0 1.6rem;margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--filet)}
+.nav-pied a{margin-right:0;padding:.62rem 0;text-decoration:none}
+.nav-pied a:hover{text-decoration:underline;text-underline-offset:4px}
 .mention-tracage{margin-top:.8rem;font-size:.85rem}
 
 /* Réactif */
@@ -138,7 +143,7 @@ footer.site nav a{margin-right:1.6rem}
   nav.principale{display:none}
   .barre .bouton{display:none}
   .barre{padding-top:1rem;padding-bottom:1rem}
-  .barre .ecrire{display:inline-block;padding:.45rem 0;font-size:1rem;color:var(--marque);text-decoration:none;font-weight:600}
+  .barre .ecrire{display:inline-block;padding:.55rem 0;font-size:1rem;color:var(--marque);text-decoration:none;font-weight:600}
   .barre .ecrire:hover{text-decoration:underline;text-underline-offset:4px}
 }
 
@@ -759,6 +764,17 @@ footer.site nav a{margin-right:1.6rem}
 
 <footer class="site">
   <div class="conteneur">
+    <nav class="nav-pied" aria-label="Sections du site">
+      <a href="#preuve">La preuve</a>
+      <a href="#methode">La méthode</a>
+      <a href="#situer">Nous situer</a>
+      <a href="#pour-qui">Pour qui</a>
+      <a href="#offre">L'offre</a>
+      <a href="#garanties">Nos garanties</a>
+      <a href="#questions">Questions</a>
+      <a href="#qui">Qui je suis</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <nav aria-label="Liens légaux">
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/information-prospection">Données personnelles &amp; prospection</a>
